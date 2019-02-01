@@ -4,6 +4,7 @@ Consider there is a group of restaurants. These restaurants can be ordered and d
 
 * Each restaurant has one or more business hours on each day of week (11am-9pm, or 10am-2pm + 5pm-10pm, and etc.).
 * A restaurant can have different hours on each day of week - assumption about any recurring pattern may be risky.
+* Assume all restaurants are in the same time zone.
 
 Model the restaurant hours.
 
