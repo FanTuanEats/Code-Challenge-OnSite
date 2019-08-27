@@ -23,20 +23,19 @@ RSpec.describe 'Restaurant' do
   before do
     @restaurants = [
       Restaurant.new("Restaurant 1", [
-        OpenHour.new(1, 11, 13),
-        OpenHour.new(1, 14, 20),
+        OpenHour.new(1, 11, 0, 13, 0),
+        OpenHour.new(1, 14, 0, 20, 0),
       ]),
       Restaurant.new("Restaurant 2", [
-        OpenHour.new(1, 11, 13),
-        OpenHour.new(1, 14, 20),
+        OpenHour.new(1, 13, 0, 16, 0),
       ]),
       Restaurant.new("Restaurant 3", [
-        OpenHour.new(1, 12, 15),
-        OpenHour.new(1, 14, 20),
+        OpenHour.new(1, 10, 0, 13, 0),
+        OpenHour.new(1, 14, 0, 20, 0),
       ]),
       Restaurant.new("Restaurant 4", [
-        OpenHour.new(2, 11, 13),
-        OpenHour.new(2, 14, 20),
+        OpenHour.new(0, 11, 0, 13, 0),
+        OpenHour.new(0, 14, 0, 20, 0),
       ])
     ]
   end
@@ -45,7 +44,7 @@ RSpec.describe 'Restaurant' do
     expect(@restaurants.size).to be 4
 
     expect(Restaurant.open_restaurants(@restaurants, 1).size).to be 3
-    expect(Restaurant.open_restaurants(@restaurants, 2).size).to be 1
-    expect(Restaurant.open_restaurants(@restaurants, 3).size).to be 0
+    expect(Restaurant.open_restaurants(@restaurants, 0).size).to be 1
+    expect(Restaurant.open_restaurants(@restaurants, 2).size).to be 0
   end
 end
