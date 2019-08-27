@@ -2,6 +2,15 @@ require 'spec_helper'
 require_relative '../restaurant'
 require_relative '../open_hour'
 
+RSpec.describe 'OpenHour' do
+  it 'testing OpenHour' do
+    @open_hour = OpenHour.new(1, 11, 0, 13, 0)
+
+    expect(@open_hour.real_at(Time.new(2019, 8, 19))).to be_a(Range)
+    expect(@open_hour.real_at(Time.new(2019, 8, 18))).to be_a(nil.class)
+  end
+end
+
 RSpec.describe 'Restaurant' do
   before do
     @restaurants = [

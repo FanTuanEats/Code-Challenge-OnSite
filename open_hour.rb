@@ -1,9 +1,16 @@
 class OpenHour
-  attr_accessor :day, :open_time, :close_time
+  attr_accessor :wday, :open_time, :close_time
 
-  def initialize(day, open_hour, close_hour)
-    @day = day
-    @open_time = Time.new(2000, 1, 1, open_hour)
-    @close_time = Time.new(2000, 1, 1, close_hour)
+  def initialize(wday, open_hour, open_min, close_hour, close_min)
+    @wday = wday
+    @open_time = Time.new(2000, 1, 1, open_hour, open_min)
+    @close_time = Time.new(2000, 1, 1, close_hour, close_min)
+  end
+
+  def real_at(time = Time.now)
+    return nil unless time.wday == wday
+    start_time = Time.new(time.year, time.month, time.day, open_time.hour, open_time.min)
+    end_time = Time.new(time.year, time.month, time.day, close_time.hour, close_time.min)
+    (start_time..end_time)
   end
 end
