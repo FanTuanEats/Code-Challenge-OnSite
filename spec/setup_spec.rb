@@ -40,11 +40,21 @@ RSpec.describe 'Restaurant' do
     ]
   end
 
-  it 'only 3 restaurants opened in day one' do
+  it 'only 3 restaurants opened in monday(wday = 1), and 1 in sunday(wday = 0)' do
     expect(@restaurants.size).to be 4
 
-    expect(Restaurant.open_restaurants(@restaurants, 1).size).to be 3
-    expect(Restaurant.open_restaurants(@restaurants, 0).size).to be 1
-    expect(Restaurant.open_restaurants(@restaurants, 2).size).to be 0
+    expect(Restaurant.open_restaurants(@restaurants, 1).size).to eq(3)
+    expect(Restaurant.open_restaurants(@restaurants, 0).size).to eq(1)
+    expect(Restaurant.open_restaurants(@restaurants, 2).size).to eq(0)
+  end
+
+  it 'only 2 restaurants opened in monday at 11:20' do
+    monday_time_1 = Time.new(2019, 8, 19, 11, 20)
+    monday_time_2 = Time.new(2019, 8, 19, 7, 20)
+    sunday_time_1 = Time.new(2019, 8, 18, 11, 20)
+
+    expect(Restaurant.open_restaurants_at(@restaurants, monday_time_1).size).to eq(2)
+    expect(Restaurant.open_restaurants_at(@restaurants, monday_time_2).size).to eq(0)
+    expect(Restaurant.open_restaurants_at(@restaurants, sunday_time_1).size).to eq(1)
   end
 end
