@@ -13,4 +13,10 @@ class OpenHour
     end_time = Time.new(time.year, time.month, time.day, close_time.hour, close_time.min)
     (start_time..end_time)
   end
+
+  def is_open?(time)
+    open_at = real_at(time)
+    return false if open_at.nil?
+    open_at.cover?(time)
+  end
 end

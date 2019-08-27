@@ -8,6 +8,14 @@ RSpec.describe 'OpenHour' do
 
     expect(@open_hour.real_at(Time.new(2019, 8, 19))).to be_a(Range)
     expect(@open_hour.real_at(Time.new(2019, 8, 18))).to be_a(nil.class)
+
+    expect(@open_hour.is_open?(Time.new(2019, 8, 19, 10, 0))).to be(false)
+    expect(@open_hour.is_open?(Time.new(2019, 8, 19, 10, 30))).to be(false)
+    expect(@open_hour.is_open?(Time.new(2019, 8, 19, 11, 0))).to be(true)
+    expect(@open_hour.is_open?(Time.new(2019, 8, 19, 11, 30))).to be(true)
+    expect(@open_hour.is_open?(Time.new(2019, 8, 19, 13, 0))).to be(true)
+    expect(@open_hour.is_open?(Time.new(2019, 8, 19, 13, 10))).to be(false)
+    expect(@open_hour.is_open?(Time.new(2019, 8, 18, 11, 30))).to be(false)
   end
 end
 
