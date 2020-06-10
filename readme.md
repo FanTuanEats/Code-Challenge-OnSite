@@ -12,5 +12,3 @@ Model the restaurant hours.
 
 1. Given an arbitrary timestamp, define a method that returns whether all restaurants are open.
 2. Given an arbitrary timestamp, define a method that returns all time intervals in the next 48 hours during which all restaurants are open.
-3. Assuming all orders can be fulfilled in 30 minutes, and that selectable delivery times are 1-hour apart, define a method that returns all available delivery time between an arbitrary timestamp and the end of day. For example, if a restaurant opens between 5pm-8pm, and the provided timestamp is 5pm today, then available delivery times may be 5:30pm, 6:30pm, 7:30pm, or 8:30pm today.
-
